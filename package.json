@@ -1,0 +1,32 @@
+{
+  "name": "plastic-css",
+  "version": "1.0.0",
+  "description": "A Flexible CSS Framework",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "node-sass scss -o build && echo \"Plastic.css: build completed.\"",
+    "watch:css": "node-sass --watch scss -o build && echo \"Plastic.css: watching...\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phcp/plastic-css.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "framework",
+    "node",
+    "flex",
+    "flexbox",
+    "flexible"
+  ],
+  "author": "Paulo Henrique",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phcp/plastic-css/issues"
+  },
+  "homepage": "https://github.com/phcp/plastic-css#readme",
+  "dependencies": {
+    "node-sass": "^4.7.2"
+  }
+}
