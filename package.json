@@ -4,8 +4,12 @@
   "description": "A Flexible CSS Framework",
   "main": "index.js",
   "scripts": {
-    "build:css": "node-sass scss -o build && echo \"Plastic.css: build completed.\"",
-    "watch:css": "node-sass --watch scss -o build && echo \"Plastic.css: watching...\""
+    "build:css:compressed": "cleancss -o dist/plastic.min.css dist/plastic.css",
+    "build:css:expanded": "node-sass scss -o dist --output-style expanded",
+    "print:build": "echo \"Plastic.css: build completed.\"",
+    "print:watch": "echo \"Plastic.css: watching...\"",
+    "build:css": "npm-run-all --sequential build:css:* print:build",
+    "watch:css": "npm-run-all build:css:* -w print:watch"
   },
   "repository": {
     "type": "git",
@@ -13,12 +17,12 @@
   },
   "keywords": [
     "css",
-    "sass",
     "framework",
-    "node",
     "flex",
     "flexbox",
-    "flexible"
+    "flexible",
+    "node",
+    "sass"
   ],
   "author": "Paulo Henrique",
   "license": "MIT",
@@ -26,7 +30,12 @@
     "url": "https://github.com/phcp/plastic-css/issues"
   },
   "homepage": "https://github.com/phcp/plastic-css#readme",
-  "dependencies": {
-    "node-sass": "^4.7.2"
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "clean-css-cli": "^4.1.10",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-cli": "^4.1.1"
   }
 }

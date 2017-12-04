@@ -1,0 +1,11 @@
+$colors: map-collect($red, $pink, $purple);
+
+@each $color in map-keys($colors) {
+    .bg-#{$color} {
+        background-color: map-get($colors, $color);
+    }
+
+    .fg-#{$color} {
+        color: map-get($colors, $color);
+    }
+}
