@@ -1,11 +1,19 @@
-@mixin flex-selectors($property, $values, $class-prefix) {
-    @each $value in $values {
-        .#{unquote($class-prefix)}-#{$value} {
-            #{$property}: $value;
+@mixin flex-selectors($property, $values, $class-prefix, $is-child-node) {
+  @each $value in $values {
+    .flex {
+      @if $is-child-node {
+        > .#{unquote($class-prefix)}-#{$value} {
+          #{$property}: $value;
         }
+      } @else {
+        .#{unquote($class-prefix)}-#{$value} {
+          #{$property}: $value;
+        }
+      }
     }
+  }
 }
 
-@include flex-selectors(justify-content, $jc-values, 'jc');
-@include flex-selectors(align-items, $ai-values, 'ai');
-@include flex-selectors(align-self, $as-values, 'as');
+@include flex-selectors(justify-content, $jc-values, 'jc', false);
+@include flex-selectors(align-items, $ai-values, 'ai', false);
+@include flex-selectors(align-self, $as-values, 'as', false);
