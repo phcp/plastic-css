@@ -2,14 +2,15 @@
   "name": "plastic-css",
   "version": "1.0.0",
   "description": "A Flexible CSS Framework",
-  "main": "index.js",
+  "main": "dist/plastic.min.css",
   "scripts": {
-    "build:css:compressed": "cleancss -o dist/plastic.min.css dist/plastic.css",
+    "build:css:compressed": "cleancss --source-map -o dist/plastic.min.css dist/plastic.css",
     "build:css:expanded": "node-sass scss -o dist --output-style expanded",
+    "task:autoprefixer": "postcss dist/plastic.css --use autoprefixer -d dist --map \".\"",
     "print:build": "echo \"Plastic.css: build completed.\"",
     "print:watch": "echo \"Plastic.css: watching...\"",
-    "build:css": "npm-run-all --sequential build:css:* print:build",
-    "watch:css": "npm-run-all build:css:* -w print:watch"
+    "build:css": "run-s build:css:expanded task:autoprefixer build:css:compressed print:build",
+    "watch:css": "nodemon -e scss -x \"npm run build:css\""
   },
   "repository": {
     "type": "git",
@@ -30,13 +31,17 @@
     "url": "https://github.com/phcp/plastic-css/issues"
   },
   "homepage": "https://github.com/phcp/plastic-css#readme",
-  "dependencies": {},
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
     "clean-css-cli": "^4.1.10",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.12.5",
     "npm-run-all": "^4.1.2",
     "postcss-cli": "^4.1.1",
-    "sass-lint": "^1.12.1"
+    "sass-lint": "^1.12.1",
+    "sass-module-importer": "^1.4.0"
   }
 }
