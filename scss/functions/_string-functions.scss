@@ -1,0 +1,9 @@
+@function get-flex-selector-name($property-value) {
+  @if $property-value == flex-start {
+    @return start;
+  } @else if $property-value == flex-end {
+    @return end;
+  } @else {
+    @return $property-value;
+  }
+}

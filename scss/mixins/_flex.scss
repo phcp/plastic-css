@@ -1,3 +1,17 @@
-@mixin flex {
-  display: flex;
+@mixin flex-selectors($property, $values, $class-prefix, $is-child-node) {
+  @each $value in $values {
+    $selector-name: get-flex-selector-name($value);
+
+    .flex {
+      @if $is-child-node {
+        & > .#{unquote($class-prefix)}-#{$selector-name} {
+          #{$property}: $value;
+        }
+      } @else {
+        &.#{unquote($class-prefix)}-#{$selector-name} {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
 }

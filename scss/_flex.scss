@@ -1,19 +1,54 @@
-@mixin flex-selectors($property, $values, $class-prefix, $is-child-node) {
-  @each $value in $values {
-    .flex {
-      @if $is-child-node {
-        > .#{unquote($class-prefix)}-#{$value} {
-          #{$property}: $value;
-        }
-      } @else {
-        .#{unquote($class-prefix)}-#{$value} {
-          #{$property}: $value;
-        }
-      }
+.flex {
+  display: flex;
+
+  &.vertical,
+  &.v {
+    flex-direction: column;
+
+    &.reverse,
+    &.r {
+      flex-direction: column-reverse;
     }
   }
+
+  &.horizontal,
+  &.h {
+    flex-direction: row;
+
+    &.reverse,
+    &.r {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+
+    &-reverse {
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  &.nowrap {
+    flex-wrap: nowrap;
+  }
+
+  > {
+    @for $i from 0 to $basis-limit {
+      $size: $i * $basis-step;
+  
+      .fb-#{$size} {
+        flex-basis: $size + unquote('%');
+      }
+    }
+
+    .grow {
+      flex-grow: 1;
+    }
+  }
+
 }
 
 @include flex-selectors(justify-content, $jc-values, 'jc', false);
 @include flex-selectors(align-items, $ai-values, 'ai', false);
-@include flex-selectors(align-self, $as-values, 'as', false);
+@include flex-selectors(align-self, $as-values, 'as', true);
