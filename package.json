@@ -4,11 +4,10 @@
   "description": "A Flexible CSS Framework",
   "main": "dist/plastic.min.css",
   "scripts": {
-    "build:css:compressed": "cleancss --source-map -o dist/plastic.min.css dist/plastic.css",
     "build:css:expanded": "node-sass scss -o dist --output-style expanded",
     "task:autoprefixer": "postcss dist/plastic.css --use autoprefixer -d dist --map \".\"",
+    "build:css:compressed": "cleancss --source-map -o dist/plastic.min.css dist/plastic.css",
     "print:build": "echo \"Plastic.css: build completed.\"",
-    "print:watch": "echo \"Plastic.css: watching...\"",
     "build:css": "run-s build:css:expanded task:autoprefixer build:css:compressed print:build",
     "watch:css": "nodemon -e scss -x \"npm run build:css\""
   },
