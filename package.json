@@ -4,7 +4,7 @@
   "description": "A Flexible CSS Framework",
   "main": "dist/plastic.min.css",
   "scripts": {
-    "build:css:expanded": "node-sass scss -o dist --output-style expanded",
+    "build:css:expanded": "node-sass scss -o dist --include-path node_modules/normalize-scss/sass --output-style expanded",
     "task:autoprefixer": "postcss dist/plastic.css --use autoprefixer -d dist --map \".\"",
     "build:css:compressed": "cleancss --source-map -o dist/plastic.min.css dist/plastic.css",
     "print:build": "echo \"Plastic.css: build completed.\"",
@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/phcp/plastic-css#readme",
   "dependencies": {
-    "normalize.css": "^7.0.0"
+    "normalize-scss": "^7.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",

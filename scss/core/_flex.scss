@@ -36,7 +36,7 @@
   > {
     @for $i from 0 to $basis-limit {
       $size: $i * $basis-step;
-  
+
       .fb-#{$size} {
         flex-basis: $size + unquote('%');
       }
@@ -46,7 +46,6 @@
       flex-grow: 1;
     }
   }
-
 }
 
 @include flex-selectors(justify-content, $jc-values, 'jc', false);
