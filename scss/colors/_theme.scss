@@ -1,0 +1,17 @@
+@mixin material-color-selectors($primary-color-name, $accent-color-name: null) {
+  .bg,
+  .fg {
+    &-primary,
+    #{if($accent-color-name == null, '&-accent')} {
+      background-color: material-color(primary-color-name, 500);
+
+      &.light {
+        background-color: #111;
+      }
+
+      &.dark {
+        background-color: #000;
+      }
+    }
+  }
+}
