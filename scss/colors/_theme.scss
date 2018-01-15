@@ -1,17 +1,32 @@
-@mixin material-color-selectors($primary-color-name, $accent-color-name: null) {
+@mixin material-color-selectors {
   .bg,
   .fg {
-    &-primary,
-    #{if($accent-color-name == null, '&-accent')} {
-      background-color: material-color(primary-color-name, 500);
+    &-primary {
+      background-color: material-color($primary-color, $primary-default-variant);
 
       &.light {
-        background-color: #111;
+        background-color: material-color($primary-color, $primary-light-variant);
       }
 
       &.dark {
-        background-color: #000;
+        background-color: material-color($primary-color, $primary-dark-variant);
+      }
+    }
+
+    @if($accent-color != null) {
+      &-accent {
+        background-color: material-color($accent-color, $accent-default-variant);
+
+        &.light {
+          background-color: material-color($accent-color, $accent-light-variant);
+        }
+
+        &.dark {
+          background-color: material-color($accent-color, $accent-dark-variant);
+        }
       }
     }
   }
 }
+
+@include material-color-selectors;

@@ -1,0 +1,9 @@
+@mixin debug-map($map) {
+  @at-root {
+    __properties__ {
+      @each $key, $value in $map {
+        #{$key}: inspect($value);
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@function brightness($color) {
+  @return (red($color) + green($color) + blue($color)) / (255 * 3);
+}
+
+@function contrast-color($color, $dark: $dark-color, $light: $light-color) {
+  @if $color == null {
+    @return null;
+  } @else {
+    $color-brightness: brightness($color);
+    $light-interval: abs($color-brightness — brightness($light));
+    $dark-interval: abs($color-brightness — brightness($dark));
+
+    @return if($light-interval > $dark-interval, $light, $dark);
+  }
+}
+
+@function material-color($color, $variant) {
+  $color-map: map-get($material-colors-map, $color);
+  @return map-get($color-map, $variant);
+}

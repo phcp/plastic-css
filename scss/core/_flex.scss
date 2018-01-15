@@ -48,6 +48,24 @@
   }
 }
 
+@mixin flex-selectors($property, $values, $class-prefix, $is-child-node) {
+  @each $value in $values {
+    $selector-name: flex-selector-name($value);
+
+    .flex {
+      @if $is-child-node {
+        & > .#{unquote($class-prefix)}-#{$selector-name} {
+          #{$property}: $value;
+        }
+      } @else {
+        &.#{unquote($class-prefix)}-#{$selector-name} {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
 @include flex-selectors(justify-content, $jc-values, 'jc', false);
 @include flex-selectors(align-items, $ai-values, 'ai', false);
 @include flex-selectors(align-self, $as-values, 'as', true);

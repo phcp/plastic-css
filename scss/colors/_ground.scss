@@ -1,11 +1,14 @@
-$colors: map-collect($red, $pink, $purple);
+@if($create-all-colors) {
+  @each $color-name, $color-map in $material-colors-map {
+    @each $color-variant, $color-value in $color-map {
+      .bg-#{$color-name}-#{$color-variant} {
+        background-color: $color-value;
+        //color: contrast-color($color-value);
+      }
 
-@each $color in map-keys($colors) {
-  .bg-#{$color} {
-    background-color: map-get($colors, $color);
-  }
-
-  .fg-#{$color} {
-    color: map-get($colors, $color);
+      .fg-#{$color-name}-#{$color-variant} {
+        color: $color-value;
+      }
+    }
   }
 }
