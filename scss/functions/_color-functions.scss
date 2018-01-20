@@ -7,8 +7,8 @@
     @return null;
   } @else {
     $color-brightness: brightness($color);
-    $light-interval: abs($color-brightness — brightness($light));
-    $dark-interval: abs($color-brightness — brightness($dark));
+    $light-interval: abs($color-brightness - brightness($light));
+    $dark-interval: abs($color-brightness - brightness($dark));
 
     @return if($light-interval > $dark-interval, $light, $dark);
   }

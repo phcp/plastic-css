@@ -3,7 +3,7 @@
     @each $color-variant, $color-value in $color-map {
       .bg-#{$color-name}-#{$color-variant} {
         background-color: $color-value;
-        //color: contrast-color($color-value);
+        color: #{contrast-color($color-value)};
       }
 
       .fg-#{$color-name}-#{$color-variant} {
